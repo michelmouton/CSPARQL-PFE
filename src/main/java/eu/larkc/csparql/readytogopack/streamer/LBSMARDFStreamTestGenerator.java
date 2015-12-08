@@ -102,7 +102,9 @@ public class LBSMARDFStreamTestGenerator extends RdfStream implements Runnable {
 							predicate, object, System.currentTimeMillis());
 					this.put(q);
 					//          logger.info(q.toString());
+					System.out.println("ct : " + this.ct);
 					ct++;
+					
 					
 					try {
 						Thread.sleep(10);
@@ -114,8 +116,9 @@ public class LBSMARDFStreamTestGenerator extends RdfStream implements Runnable {
 
 				//System.out.println(ct+ " triples streamed so far");
 
-				
+				System.out.println("c : " + this.ct);
 				this.c++;
+				
 
 			}
 
@@ -143,6 +146,6 @@ public class LBSMARDFStreamTestGenerator extends RdfStream implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(dumpRelatedStaticKnowledge(10));
+		//System.out.println(dumpRelatedStaticKnowledge(10));
 	}
 }

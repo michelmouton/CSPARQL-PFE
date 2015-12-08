@@ -97,7 +97,7 @@ public class HelloWorldCSPARQL {
 
 			logger.debug("My_QUERY example");
 
-			query = "REGISTER QUERY MyQuery AS "
+			/*query = "REGISTER QUERY MyQuery AS "
 					//+ "PREFIX ex: <http://myexample.org/> "
 					+ "PREFIX om-owl: <http://knoesis.wright.edu/ssw/ont/sensor-observation.owl#>"
 					+ "PREFIX weather: <http://knoesis.wright.edu/ssw/ont/weather.owl#>"
@@ -107,7 +107,16 @@ public class HelloWorldCSPARQL {
 					+ "?obs om-owl:observedProperty weather:_RelativeHumidity . }";
 					//+ "?obs om-owl:observedProperty weather:_AirTemperature ; }"; 
 				    //+   "om-owl:procedure ?sensor ;"  
-				    //+  "om-owl:result [om-owl:floatValue ?tempvalue] .}";
+				    //+  "om-owl:result [om-owl:floatValue ?tempvalue] .}";*/
+			
+			query = "REGISTER QUERY MyQuery AS "
+					+ "PREFIX om-owl: <http://knoesis.wright.edu/ssw/ont/sensor-observation.owl#>"
+					+ "PREFIX weather: <http://knoesis.wright.edu/ssw/ont/weather.owl#>"
+					+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
+					+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+					+ "SELECT DISTINCT ?sensor ?value ?uom "
+					+ "FROM STREAM <http://myexample.org/stream> [RANGE 1s STEP 1s] "
+					+ "WHERE { ?sensor ?value ?uom }";
 			
 			
 			break;
